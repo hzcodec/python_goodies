@@ -2,7 +2,7 @@
 #   Date        : 2016-03-12
 #   File        : server.py
 #   Reference   : -
-#   Description : Server. Receiving messages.
+#   Description : Server. Receiving messages. Used together with client.py.
 #   Python ver  : 2.7.3 (gcc 4.6.3)
 
 import os
