@@ -1,3 +1,11 @@
+# Author      : Heinz Samuelsson
+# Date        : Fri Mar 25 10:38:15 CET 2016
+# File        : gun.py
+# Reference   : -
+# Description : Used together with space.py
+#
+# Python ver : 2.7.3
+
 import logging
 
 class Gun(object):
