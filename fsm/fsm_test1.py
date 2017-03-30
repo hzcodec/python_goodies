@@ -1,3 +1,5 @@
+import sys
+
 var = 0
 
 class bcolors:
@@ -56,7 +58,13 @@ def FSM1_state3(cargo):
     cargo = var
     print bcolors.GREEN + '  FSM1_state3' + bcolors.ENDC
     print '13 cargo', cargo
-    nextState = FSM1_state1
+
+    if (cargo < 4):
+        nextState = FSM1_state1
+    else:
+        print 'exit'
+        sys.exit(0)
+
     return nextState, cargo
 
 
