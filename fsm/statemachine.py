@@ -1,3 +1,10 @@
+#   Auther      : Heinz Samuelsson
+#   Date        : 2017-03-30
+#   File        : fsm3.py
+#   Reference   : http://gnosis.cx/publish/programming/charming_python_4.html
+#   Description : FSM
+#   Python ver  : 2.7.3 (gcc 4.6.3)
+
 from string import upper
 
 class StateMachine:
