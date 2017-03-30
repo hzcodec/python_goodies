@@ -17,14 +17,14 @@ class FSM():
 	self.nx = startState
 	self.cargo = cargo
 
-    def run(self, cargo):
+    def run(self):
         if (self.running == 0):
-	    self.nx = self.startState(cargo)
+	    self.nx = self.startState(self.cargo)
 	    self.running = 1
-	    print 'cargo:', cargo
+	    print 'cargo:', self.cargo
 	else:
 	    print '    running'
-	    self.nx = self.nx(cargo)
+	    self.nx = self.nx(self.cargo)
 
 
 
@@ -63,10 +63,10 @@ def FSM2_state3(cargo):
     return nextState
 
 
-fsm1 = FSM(FSM1_state1, 99)
-fsm2 = FSM(FSM2_state1, 88)
+fsm1 = FSM(FSM1_state1, 1)
+fsm2 = FSM(FSM2_state1, 2)
 
 for i in range(1, 8):
-    fsm1.run(1)
-    fsm2.run(2)
+    fsm1.run()
+    fsm2.run()
 
