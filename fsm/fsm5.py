@@ -17,7 +17,7 @@ class StateMachine_A:
 	self.val = 0
 
     def define_states(self):
-        print 'Define states'
+        print 'Define states for', self.__class__.__name__
         self.m.add_state("STATE1", self.state1)
         self.m.add_state("STATE2", self.state2)
         self.m.add_state("STATE3", self.state3)
@@ -58,7 +58,7 @@ class StateMachine_B:
 	self.val = 0
 
     def define_states(self):
-        print 'Define states'
+        print 'Define states for', self.__class__.__name__
         self.m.add_state("STATE1", self.state1)
         self.m.add_state("STATE2", self.state2)
         self.m.add_state("OUT_OF_RANGE", None, end_state=1)
