@@ -5,6 +5,10 @@
 #   File        : fsm5.py
 #   Reference   : http://gnosis.cx/publish/programming/charming_python_4.html
 #   Description : FSM. cargo can be used as a container for user data.
+#                 All state class shall contain:
+#                     __init__(), define_states(), go()
+#                 Then all states has to be implemented.
+#
 #   Python ver  : 2.7.3 (gcc 4.6.3)
 
 from time import sleep
