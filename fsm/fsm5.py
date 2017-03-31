@@ -26,19 +26,19 @@ class StateMachine_A:
 
     def state1(self, val):
         self.val += 1
-        print "STATE1 State in", self.val, self.__class__.__name__
+        print "STATE1 State in", self.__class__.__name__ + "  val:", self.val
         newState =  "STATE2";
         sleep(DLY)
         return (newState, self.val)
     
     def state2(self, val):
-        print "STATE2 State in", self.val, self.__class__.__name__
+        print "STATE2 State in", self.__class__.__name__ + "  val:", self.val
         newState =  "STATE3";
         sleep(DLY)
         return (newState, self.val)
     
     def state3(self, val):
-        print "STATE3 State in", self.val, self.__class__.__name__
+        print "STATE3 State in", self.__class__.__name__ + "  val:", self.val
         if (self.val == 5):
             newState =  "OUT_OF_RANGE";
         else:
@@ -48,7 +48,7 @@ class StateMachine_A:
         return (newState, self.val)
 
     def go(self):
-        print 'go'
+        #print 'go'
 	self.m.run(1)
 
 class StateMachine_B:
@@ -66,16 +66,17 @@ class StateMachine_B:
 
     def state1(self, val):
         self.val += 1
-        print "STATE1 State in", self.val, self.__class__.__name__
+        print "STATE1 State in", self.__class__.__name__ + "  val:", self.val
         newState =  "STATE2";
         sleep(DLY)
         return (newState, self.val)
     
     def state2(self, val):
-        print  "STATE2 State in", self.val, self.__class__.__name__
+        print  "STATE2 State in", self.__class__.__name__ + "  val:", self.val
         newState =  "STATE1";
 
-        if (self.val == 3):
+        if (self.val == 4):
+            print  "OoR", self.__class__.__name__
             newState =  "OUT_OF_RANGE";
         else:
             newState =  "STATE1";
@@ -83,7 +84,7 @@ class StateMachine_B:
         return (newState, self.val)
     
     def go(self):
-        print 'go'
+        #print 'go'
 	self.m.run(1)
 
 
@@ -94,7 +95,7 @@ if __name__ == "__main__":
     one.define_states()
     two.define_states()
 
-    for i in range(0, 8):
+    for i in range(0, 12):
         one.go()
         two.go()
 
