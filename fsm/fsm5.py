@@ -16,21 +16,29 @@ class StateMachine_A:
         self.m = StateMachine()
 	self.val = 0
 
+    def define_states(self):
+        print 'Define states'
+        self.m.add_state("STATE1", self.state1)
+        self.m.add_state("STATE2", self.state2)
+        self.m.add_state("STATE3", self.state3)
+        self.m.add_state("OUT_OF_RANGE", None, end_state=1)
+        self.m.set_start("STATE1")
+
     def state1(self, val):
         self.val += 1
-        print "STATE1 State:", self.val
+        print "STATE1 State in", self.val, self.__class__.__name__
         newState =  "STATE2";
         sleep(DLY)
         return (newState, self.val)
     
     def state2(self, val):
-        print  "STATE2 State:", self.val
+        print "STATE2 State in", self.val, self.__class__.__name__
         newState =  "STATE3";
         sleep(DLY)
         return (newState, self.val)
     
     def state3(self, val):
-        print  "STATE3 State:", self.val
+        print "STATE3 State in", self.val, self.__class__.__name__
         if (self.val == 5):
             newState =  "OUT_OF_RANGE";
         else:
@@ -38,14 +46,6 @@ class StateMachine_A:
     
         sleep(DLY)
         return (newState, self.val)
-
-    def define(self):
-        print 'Define states'
-        self.m.add_state("STATE1", self.state1)
-        self.m.add_state("STATE2", self.state2)
-        self.m.add_state("STATE3", self.state3)
-        self.m.add_state("OUT_OF_RANGE", None, end_state=1)
-        self.m.set_start("STATE1")
 
     def go(self):
         print 'go'
@@ -57,15 +57,22 @@ class StateMachine_B:
         self.m = StateMachine()
 	self.val = 0
 
+    def define_states(self):
+        print 'Define states'
+        self.m.add_state("STATE1", self.state1)
+        self.m.add_state("STATE2", self.state2)
+        self.m.add_state("OUT_OF_RANGE", None, end_state=1)
+        self.m.set_start("STATE1")
+
     def state1(self, val):
         self.val += 1
-        print "STATE1 State:", self.val
+        print "STATE1 State in", self.val, self.__class__.__name__
         newState =  "STATE2";
         sleep(DLY)
         return (newState, self.val)
     
     def state2(self, val):
-        print  "STATE2 State:", self.val
+        print  "STATE2 State in", self.val, self.__class__.__name__
         newState =  "STATE1";
 
         if (self.val == 3):
@@ -75,13 +82,6 @@ class StateMachine_B:
         sleep(DLY)
         return (newState, self.val)
     
-    def define(self):
-        print 'Define states'
-        self.m.add_state("STATE1", self.state1)
-        self.m.add_state("STATE2", self.state2)
-        self.m.add_state("OUT_OF_RANGE", None, end_state=1)
-        self.m.set_start("STATE1")
-
     def go(self):
         print 'go'
 	self.m.run(1)
@@ -91,8 +91,8 @@ if __name__ == "__main__":
 
     one = StateMachine_A()
     two = StateMachine_B()
-    one.define()
-    two.define()
+    one.define_states()
+    two.define_states()
     one.go()
     two.go()
 
