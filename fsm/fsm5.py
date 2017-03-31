@@ -17,6 +17,7 @@ class StateMachine_A:
 	print 'Create', self.__class__.__name__
         self.m = sm.StateMachine()
 	self.val = 0
+	self.define_states()
 
     def define_states(self):
         print 'Define states for', self.__class__.__name__
@@ -58,6 +59,7 @@ class StateMachine_B:
 	print 'Create', self.__class__.__name__
         self.m = sm.StateMachine()
 	self.val = 0
+	self.define_states()
 
     def define_states(self):
         print 'Define states for', self.__class__.__name__
@@ -94,10 +96,6 @@ if __name__ == "__main__":
 
     one = StateMachine_A()
     two = StateMachine_B()
-    print 40*'-'
-
-    one.define_states()
-    two.define_states()
     print 40*'-'
 
     for i in range(0, 12):
