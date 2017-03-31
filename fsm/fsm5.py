@@ -38,6 +38,7 @@ class StateMachine_A:
     def state1(self, cargo):
         self.cargo.x += 1
 	self.cargo.y += 2
+	self.cargo.name = 'Jennie'
         print "STATE1 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
         newState =  "STATE2";
         sleep(DLY)
@@ -45,7 +46,7 @@ class StateMachine_A:
     
     def state2(self, cargo):
 	self.cargo.y *= 2
-        print "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo.x, self.cargo.y
+        print "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo.x, self.cargo.y, self.cargo.name
         newState =  "STATE3";
         sleep(DLY)
         return (newState, self.cargo)
@@ -80,13 +81,14 @@ class StateMachine_B:
     def state1(self, cargo):
         self.cargo.x += 1
         self.cargo.y += 4
+	self.cargo.name = 'Mattias'
         print "STATE1 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
         newState =  "STATE2";
         sleep(DLY)
         return (newState, self.cargo)
     
     def state2(self, cargo):
-        print  "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo.x, self.cargo.y
+        print  "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo.x, self.cargo.y, self.cargo.name
         newState =  "STATE1";
 
         if (self.cargo.x == 4):
