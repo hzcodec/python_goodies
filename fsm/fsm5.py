@@ -6,7 +6,7 @@
 #   Python ver  : 2.7.3 (gcc 4.6.3)
 
 from time import sleep
-from statemachine import StateMachine
+from statemachine2 import StateMachine
 
 DLY = 0.2
 
@@ -93,6 +93,8 @@ if __name__ == "__main__":
     two = StateMachine_B()
     one.define_states()
     two.define_states()
-    one.go()
-    two.go()
+
+    for i in range(0, 8):
+        one.go()
+        two.go()
 
