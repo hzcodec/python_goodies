@@ -12,7 +12,7 @@ import statemachine2 as sm
 
 DLY = 0.2
 
-class Sample:
+class Cargo:
     name = ''
     x = 0
     y = 0
@@ -25,7 +25,7 @@ class StateMachine_A:
 	self.define_states()
 
 	# declare an object to hold data
-	self.cargo = Sample()
+	self.cargo = Cargo()
 
     def define_states(self):
         print 'Define states for', self.__class__.__name__
@@ -69,7 +69,7 @@ class StateMachine_B:
 	print 'Create', self.__class__.__name__
         self.m = sm.StateMachine()
 	self.define_states()
-	self.cargo = Sample()
+	self.cargo = Cargo()
 
     def define_states(self):
         print 'Define states for', self.__class__.__name__
