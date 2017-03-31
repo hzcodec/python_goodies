@@ -4,7 +4,7 @@
 #   Date        : 2017-03-30
 #   File        : fsm5.py
 #   Reference   : http://gnosis.cx/publish/programming/charming_python_4.html
-#   Description : FSM
+#   Description : FSM. cargo can be used as a container for user data.
 #   Python ver  : 2.7.3 (gcc 4.6.3)
 
 from time import sleep
@@ -16,8 +16,10 @@ class StateMachine_A:
     def __init__(self):
 	print 'Create', self.__class__.__name__
         self.m = sm.StateMachine()
-	self.val = 0
 	self.define_states()
+
+	# declare an object to hold data
+	self.cargo = 0
 
     def define_states(self):
         print 'Define states for', self.__class__.__name__
@@ -27,39 +29,38 @@ class StateMachine_A:
         self.m.add_state("OUT_OF_RANGE", None, end_state=1)
         self.m.set_start("STATE1")
 
-    def state1(self, val):
-        self.val += 1
-        print "STATE1 State in", self.__class__.__name__ + "  val:", self.val
+    def state1(self, cargo):
+        self.cargo += 1
+        print "STATE1 State in", self.__class__.__name__ + "  cargo:", self.cargo
         newState =  "STATE2";
         sleep(DLY)
-        return (newState, self.val)
+        return (newState, self.cargo)
     
-    def state2(self, val):
-        print "STATE2 State in", self.__class__.__name__ + "  val:", self.val
+    def state2(self, cargo):
+        print "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo
         newState =  "STATE3";
         sleep(DLY)
-        return (newState, self.val)
+        return (newState, self.cargo)
     
-    def state3(self, val):
-        print "STATE3 State in", self.__class__.__name__ + "  val:", self.val
-        if (self.val == 5):
+    def state3(self, cargo):
+        print "STATE3 State in", self.__class__.__name__ + "  cargo:", self.cargo
+        if (self.cargo == 5):
             newState =  "OUT_OF_RANGE";
         else:
             newState =  "STATE1";
     
         sleep(DLY)
-        return (newState, self.val)
+        return (newState, self.cargo)
 
     def go(self):
-        #print 'go'
 	self.m.run(1)
 
 class StateMachine_B:
     def __init__(self):
 	print 'Create', self.__class__.__name__
         self.m = sm.StateMachine()
-	self.val = 0
 	self.define_states()
+	self.cargo = 0
 
     def define_states(self):
         print 'Define states for', self.__class__.__name__
@@ -68,24 +69,24 @@ class StateMachine_B:
         self.m.add_state("OUT_OF_RANGE", None, end_state=1)
         self.m.set_start("STATE1")
 
-    def state1(self, val):
-        self.val += 1
-        print "STATE1 State in", self.__class__.__name__ + "  val:", self.val
+    def state1(self, cargo):
+        self.cargo += 1
+        print "STATE1 State in", self.__class__.__name__ + "  cargo:", self.cargo
         newState =  "STATE2";
         sleep(DLY)
-        return (newState, self.val)
+        return (newState, self.cargo)
     
-    def state2(self, val):
-        print  "STATE2 State in", self.__class__.__name__ + "  val:", self.val
+    def state2(self, cargo):
+        print  "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo
         newState =  "STATE1";
 
-        if (self.val == 4):
+        if (self.cargo == 4):
             print  "Out of range! Quit application. Object:", self.__class__.__name__
             newState =  "OUT_OF_RANGE";
         else:
             newState =  "STATE1";
         sleep(DLY)
-        return (newState, self.val)
+        return (newState, self.cargo)
     
     def go(self):
         #print 'go'
