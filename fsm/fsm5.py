@@ -14,7 +14,7 @@ DLY = 0.2
 
 class StateMachine_A:
     def __init__(self):
-	print 'StateMachine A created'
+	print 'Create', self.__class__.__name__
         self.m = sm.StateMachine()
 	self.val = 0
 
@@ -55,7 +55,7 @@ class StateMachine_A:
 
 class StateMachine_B:
     def __init__(self):
-	print 'StateMachine B created'
+	print 'Create', self.__class__.__name__
         self.m = sm.StateMachine()
 	self.val = 0
 
