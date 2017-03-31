@@ -76,7 +76,7 @@ class StateMachine_B:
         newState =  "STATE1";
 
         if (self.val == 4):
-            print  "OoR", self.__class__.__name__
+            print  "Out of range! Quit application. Object:", self.__class__.__name__
             newState =  "OUT_OF_RANGE";
         else:
             newState =  "STATE1";
@@ -92,8 +92,11 @@ if __name__ == "__main__":
 
     one = StateMachine_A()
     two = StateMachine_B()
+    print 40*'-'
+
     one.define_states()
     two.define_states()
+    print 40*'-'
 
     for i in range(0, 12):
         one.go()
