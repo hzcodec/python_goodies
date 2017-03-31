@@ -12,6 +12,12 @@ import statemachine2 as sm
 
 DLY = 0.2
 
+class Sample:
+    name = ''
+    x = 0
+    y = 0
+
+
 class StateMachine_A:
     def __init__(self):
 	print 'Create', self.__class__.__name__
@@ -19,7 +25,7 @@ class StateMachine_A:
 	self.define_states()
 
 	# declare an object to hold data
-	self.cargo = 0
+	self.cargo = Sample()
 
     def define_states(self):
         print 'Define states for', self.__class__.__name__
@@ -30,21 +36,23 @@ class StateMachine_A:
         self.m.set_start("STATE1")
 
     def state1(self, cargo):
-        self.cargo += 1
-        print "STATE1 State in", self.__class__.__name__ + "  cargo:", self.cargo
+        self.cargo.x += 1
+	self.cargo.y += 2
+        print "STATE1 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
         newState =  "STATE2";
         sleep(DLY)
         return (newState, self.cargo)
     
     def state2(self, cargo):
-        print "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo
+	self.cargo.y *= 2
+        print "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo.x, self.cargo.y
         newState =  "STATE3";
         sleep(DLY)
         return (newState, self.cargo)
     
     def state3(self, cargo):
-        print "STATE3 State in", self.__class__.__name__ + "  cargo:", self.cargo
-        if (self.cargo == 5):
+        print "STATE3 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
+        if (self.cargo.x == 5):
             newState =  "OUT_OF_RANGE";
         else:
             newState =  "STATE1";
@@ -60,7 +68,7 @@ class StateMachine_B:
 	print 'Create', self.__class__.__name__
         self.m = sm.StateMachine()
 	self.define_states()
-	self.cargo = 0
+	self.cargo = Sample()
 
     def define_states(self):
         print 'Define states for', self.__class__.__name__
@@ -70,17 +78,18 @@ class StateMachine_B:
         self.m.set_start("STATE1")
 
     def state1(self, cargo):
-        self.cargo += 1
-        print "STATE1 State in", self.__class__.__name__ + "  cargo:", self.cargo
+        self.cargo.x += 1
+        self.cargo.y += 4
+        print "STATE1 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
         newState =  "STATE2";
         sleep(DLY)
         return (newState, self.cargo)
     
     def state2(self, cargo):
-        print  "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo
+        print  "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo.x, self.cargo.y
         newState =  "STATE1";
 
-        if (self.cargo == 4):
+        if (self.cargo.x == 4):
             print  "Out of range! Quit application. Object:", self.__class__.__name__
             newState =  "OUT_OF_RANGE";
         else:
