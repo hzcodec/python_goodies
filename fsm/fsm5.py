@@ -8,14 +8,14 @@
 #   Python ver  : 2.7.3 (gcc 4.6.3)
 
 from time import sleep
-from statemachine2 import StateMachine
+import statemachine2 as sm
 
 DLY = 0.2
 
 class StateMachine_A:
     def __init__(self):
 	print 'StateMachine A created'
-        self.m = StateMachine()
+        self.m = sm.StateMachine()
 	self.val = 0
 
     def define_states(self):
@@ -56,7 +56,7 @@ class StateMachine_A:
 class StateMachine_B:
     def __init__(self):
 	print 'StateMachine B created'
-        self.m = StateMachine()
+        self.m = sm.StateMachine()
 	self.val = 0
 
     def define_states(self):
