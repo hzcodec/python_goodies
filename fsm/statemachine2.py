@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #   Auther      : Heinz Samuelsson
 #   Date        : 2017-03-30
 #   File        : statemachine2.py
