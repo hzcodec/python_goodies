@@ -13,6 +13,7 @@
 
 from time import sleep
 import statemachine2 as sm
+import events
 
 DLY = 0.2
 
@@ -44,7 +45,13 @@ class StateMachine_A:
 	self.cargo.y += 2
 	self.cargo.name = 'Jennie'
         print "STATE1 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
-        newState =  "STATE2";
+	if (EV.STOP == 1):
+	    print 'stop'
+            newState =  "STATE2";
+	else:
+	    print 'no stop'
+            newState =  "STATE3";
+
         sleep(DLY)
         return (newState, self.cargo)
     
@@ -53,9 +60,17 @@ class StateMachine_A:
         print "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo.x, self.cargo.y, self.cargo.name
         newState =  "STATE3";
         sleep(DLY)
+
+	if (EV.RUN == 0):
+	    print 'Not running'
+	    EV.RUN = 1
+	else:
+	    print 'Running'
+
         return (newState, self.cargo)
     
     def state3(self, cargo):
+	EV.STOP = 1
         print "STATE3 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
         if (self.cargo.x == 5):
             newState =  "OUT_OF_RANGE";
@@ -112,9 +127,12 @@ if __name__ == "__main__":
 
     one = StateMachine_A()
     two = StateMachine_B()
+
+    EV = events.Events()
+
     print 40*'-'
 
     for i in range(0, 12):
         one.go()
-        two.go()
+#        two.go()
 
