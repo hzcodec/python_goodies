@@ -46,6 +46,9 @@ class StateMachine_A:
         print "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
         newState =  "STATE1";
 
+	if (self.EV.SKIP == 1):
+	    self.EV.STOP = 0
+
         sleep(DLY)
         return (newState, self.cargo)
     

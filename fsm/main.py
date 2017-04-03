@@ -4,11 +4,7 @@ import events
 
 if __name__ == "__main__":
 
-
     ev = events.Events()
-    print ev.SKIP
-    print ev.RUN
-    print ev.STOP
 
     one = fsm_A.StateMachine_A()
     two = fsm_B.StateMachine_B()
