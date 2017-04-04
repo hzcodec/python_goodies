@@ -2,8 +2,7 @@ import fsm_A
 import fsm_B
 import events
 
-if __name__ == "__main__":
-
+def main():
     ev = events.Events()
 
     one = fsm_A.StateMachine_A()
@@ -16,4 +15,8 @@ if __name__ == "__main__":
 	print '----> SKIP:%d, RUN:%d, STOP:%d' % (ev.SKIP, ev.RUN, ev.STOP)
 
     print 40*'-'
+
+
+if __name__ == "__main__":
+    main()
 

@@ -28,12 +28,12 @@ class StateMachine_A:
 
     def state1(self, cargo):
         self.cargo.x += 1
-        print "STATE1 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
+        print ev.bcolors.GREEN + "STATE1 State in", self.__class__.__name__ + "  cargo:", str(self.cargo.x) + ev.bcolors.ENDC
 
 	if (self.EV.SKIP == 0):
-	    print 'no skip from A'
+	    print ev.bcolors.GREEN + 'no skip from A' + ev.bcolors.ENDC
 	else:
-	    print 'skip from A'
+	    print ev.bcolors.GREEN + 'skip from A and send STOP' + ev.bcolors.ENDC
 	    self.EV.STOP = 1
 
 
@@ -43,7 +43,7 @@ class StateMachine_A:
         return (newState, self.cargo)
     
     def state2(self, cargo):
-        print "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
+        print ev.bcolors.GREEN + "STATE2 State in", self.__class__.__name__ + "  cargo:", str(self.cargo.x) + ev.bcolors.ENDC
         newState =  "STATE1";
 
 	if (self.EV.SKIP == 1):
