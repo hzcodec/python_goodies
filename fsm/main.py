@@ -13,10 +13,8 @@ def main():
     print NO_OF_DELIMITERS*'-'
 
     for i in range(0, 17):
-        ev = one.go(event)
-	#print '----> SKIP:%d, RUN:%d, STOP:%d' % (ev.SKIP, ev.RUN, ev.STOP)
-        ev = two.go(event)
-	#print '----> SKIP:%d, RUN:%d, STOP:%d' % (ev.SKIP, ev.RUN, ev.STOP)
+        event = one.go(event)
+        event = two.go(event)
 
     print NO_OF_DELIMITERS*'-'
 
