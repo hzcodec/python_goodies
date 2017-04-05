@@ -3,7 +3,7 @@ import statemachine2 as sm
 import events as ev
 import inspect
 
-DLY = 0.2
+DLY = 0.1
 
 class Cargo:
     name = ''
@@ -29,9 +29,10 @@ class StateMachine_A:
 
     def state1(self, cargo):
         self.cargo.x += 1
-        print "%s %s: - %s() %s" % (ev.bcolors.GREEN, \
+        print "%s %s: %s() - cargo=%d %s" % (ev.bcolors.GREEN, \
 	                            self.__class__.__name__, \
 				    inspect.stack()[0][3], \
+				    self.cargo.x, \
 				    ev.bcolors.ENDC),
 
 	if (self.EV.SKIP == 0):
@@ -47,15 +48,18 @@ class StateMachine_A:
         return (newState, self.cargo)
     
     def state2(self, cargo):
-        print "%s %s: - %s() %s" % (ev.bcolors.GREEN, \
+        print "%s %s: %s() - cargo=%d %s" % (ev.bcolors.GREEN, \
 	                            self.__class__.__name__, \
 				    inspect.stack()[0][3], \
+				    self.cargo.x, \
 				    ev.bcolors.ENDC),
         newState =  "STATE1";
 
-	if (self.EV.SKIP == 0):
+	if (self.EV.SKIP == 1):
 	    print "  %s %s %s" % (ev.bcolors.GREEN, 'skip active, send STOP', ev.bcolors.ENDC)
 	    self.EV.STOP = 0
+	else:
+	    print ""
 
         sleep(DLY)
         return (newState, self.cargo)
