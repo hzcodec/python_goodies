@@ -40,7 +40,7 @@ class StateMachine_B:
 	    print "  %s %s %s" % (ev.bcolors.BLUE, 'RUN detected', ev.bcolors.ENDC)
             self.cargo.x += 1
 	else:
-	    print "  %s %s %s" % (ev.bcolors.BLUE, '---', ev.bcolors.ENDC)
+	    print "  %s %s %s" % (ev.bcolors.BLUE, 'STOPPED', ev.bcolors.ENDC)
 
         sleep(DLY)
         return (newState, self.cargo)
@@ -50,7 +50,9 @@ class StateMachine_B:
 	                            self.__class__.__name__, \
 				    inspect.stack()[0][3], \
 				    self.cargo.x, \
-				    ev.bcolors.ENDC)
+				    ev.bcolors.ENDC),
+
+	print "  %s %s %s" % (ev.bcolors.BLUE, '---', ev.bcolors.ENDC)
         newState =  "STATE3";
 
         sleep(DLY)
@@ -61,7 +63,7 @@ class StateMachine_B:
 	                            self.__class__.__name__, \
 				    inspect.stack()[0][3], \
 				    self.cargo.x, \
-				    ev.bcolors.ENDC)
+				    ev.bcolors.ENDC),
 	if (self.cargo.x == 2):
 	    print "  %s %s %s" % (ev.bcolors.BLUE, 'enable STOP', ev.bcolors.ENDC)
 	    self.EV.STOP = 1

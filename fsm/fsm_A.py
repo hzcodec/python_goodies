@@ -61,7 +61,7 @@ class StateMachine_A:
 	    self.cargo.x = 0
 	    self.EV.RUN = 0
 	else:
-	    print ""
+	    print "  %s %s %s" % (ev.bcolors.GREEN, '---', ev.bcolors.ENDC)
 
         sleep(DLY)
         return (newState, self.cargo)
