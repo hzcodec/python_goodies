@@ -2,20 +2,20 @@ import fsm_A
 import fsm_B
 import events
 
-NO_OF_DELIMITERS = 50
+NO_OF_DELIMITERS = 65
 
 def main():
-    ev = events.Events()
+    event = events.Events()
 
     one = fsm_A.StateMachine_A()
     two = fsm_B.StateMachine_B()
 
     print NO_OF_DELIMITERS*'-'
 
-    for i in range(0, 12):
-        ev = one.go(ev)
+    for i in range(0, 15):
+        ev = one.go(event)
 	#print '----> SKIP:%d, RUN:%d, STOP:%d' % (ev.SKIP, ev.RUN, ev.STOP)
-        ev = two.go(ev)
+        ev = two.go(event)
 	#print '----> SKIP:%d, RUN:%d, STOP:%d' % (ev.SKIP, ev.RUN, ev.STOP)
 
     print NO_OF_DELIMITERS*'-'

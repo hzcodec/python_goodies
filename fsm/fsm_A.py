@@ -31,18 +31,17 @@ class StateMachine_A:
 
     def state1(self, cargo):
         self.cargo.x += 1
-        print "%s %s: %s() - cargo=%d %s" % (ev.bcolors.GREEN, \
+        print "%s %s: %s() - cargoA=%d %s" % (ev.bcolors.GREEN, \
 	                            self.__class__.__name__, \
 				    inspect.stack()[0][3], \
 				    self.cargo.x, \
 				    ev.bcolors.ENDC),
 
-	if (self.EV.SKIP == 0):
-	    print "  %s %s %s" % (ev.bcolors.GREEN, 'no skip from A', ev.bcolors.ENDC)
+	if (self.cargo.x == 3):
+	    print "  %s %s %s" % (ev.bcolors.GREEN, 'enable RUN', ev.bcolors.ENDC)
+	    self.EV.RUN = 1
 	else:
-	    print "  %s %s %s" % (ev.bcolors.GREEN, 'skip from A', ev.bcolors.ENDC)
-	    self.EV.STOP = 1
-
+	    print "  %s %s %s" % (ev.bcolors.GREEN, '---', ev.bcolors.ENDC)
 
         newState =  "STATE2";
 
@@ -50,16 +49,17 @@ class StateMachine_A:
         return (newState, self.cargo)
     
     def state2(self, cargo):
-        print "%s %s: %s() - cargo=%d %s" % (ev.bcolors.GREEN, \
+        print "%s %s: %s() - cargoA=%d %s" % (ev.bcolors.GREEN, \
 	                            self.__class__.__name__, \
 				    inspect.stack()[0][3], \
 				    self.cargo.x, \
 				    ev.bcolors.ENDC),
         newState =  "STATE1";
 
-	if (self.EV.SKIP == 1):
-	    print "  %s %s %s" % (ev.bcolors.GREEN, 'skip active, send STOP', ev.bcolors.ENDC)
-	    self.EV.STOP = 0
+	if (self.EV.STOP == 1):
+	    print "  %s %s %s" % (ev.bcolors.GREEN, 'STOP detected, disable RUN', ev.bcolors.ENDC)
+	    self.cargo.x = 0
+	    self.EV.RUN = 0
 	else:
 	    print ""
 

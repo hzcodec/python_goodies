@@ -29,42 +29,46 @@ class StateMachine_B:
         self.m.set_start("STATE1")
 
     def state1(self, cargo):
-        self.cargo.x += 1
-        print "%s %s: %s() - cargo=%d %s" % (ev.bcolors.BLUE, \
+        print "%s %s: %s() - cargoB=%d %s" % (ev.bcolors.BLUE, \
 	                            self.__class__.__name__, \
 				    inspect.stack()[0][3], \
 				    self.cargo.x, \
 				    ev.bcolors.ENDC),
         newState =  "STATE2";
 
-	if (self.EV.STOP == 1):
-	    print "  %s %s %s" % (ev.bcolors.BLUE, 'STOP event', ev.bcolors.ENDC)
-	    self.EV.SKIP = 0
+	if (self.EV.RUN == 1):
+	    print "  %s %s %s" % (ev.bcolors.BLUE, 'RUN detected', ev.bcolors.ENDC)
+            self.cargo.x += 1
 	else:
-	    print ""
+	    print "  %s %s %s" % (ev.bcolors.BLUE, '---', ev.bcolors.ENDC)
 
         sleep(DLY)
         return (newState, self.cargo)
     
     def state2(self, cargo):
-        print "%s %s: %s() - cargo=%d %s" % (ev.bcolors.BLUE, \
+        print "%s %s: %s() - cargoB=%d %s" % (ev.bcolors.BLUE, \
 	                            self.__class__.__name__, \
 				    inspect.stack()[0][3], \
 				    self.cargo.x, \
 				    ev.bcolors.ENDC)
         newState =  "STATE3";
 
-	self.EV.SKIP = 1
-
         sleep(DLY)
         return (newState, self.cargo)
 
     def state3(self, cargo):
-        print "%s %s: %s() - cargo=%d %s" % (ev.bcolors.BLUE, \
+        print "%s %s: %s() - cargoB=%d %s" % (ev.bcolors.BLUE, \
 	                            self.__class__.__name__, \
 				    inspect.stack()[0][3], \
 				    self.cargo.x, \
 				    ev.bcolors.ENDC)
+	if (self.cargo.x == 2):
+	    print "  %s %s %s" % (ev.bcolors.BLUE, 'enable STOP', ev.bcolors.ENDC)
+	    self.EV.STOP = 1
+	else:
+	    print "  %s %s %s" % (ev.bcolors.BLUE, 'disable STOP', ev.bcolors.ENDC)
+	    self.EV.STOP = 0
+
         newState =  "STATE1";
 
         sleep(DLY)
