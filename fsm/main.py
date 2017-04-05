@@ -1,3 +1,13 @@
+#!/usr/bin/env python
+
+#   Auther      : Heinz Samuelsson
+#   Date        : 2017-03-30
+#   File        : main.py
+#   Reference   : -
+#   Description : Main program for fsm_A and FSM_B. The program is creating
+#                 two instances of statemachines _A and _B.
+#   Python ver  : 2.7.3 (gcc 4.6.3)
+
 import fsm_A
 import fsm_B
 import events

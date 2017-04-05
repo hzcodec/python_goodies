@@ -1,3 +1,10 @@
+#   Auther      : Heinz Samuelsson
+#   Date        : 2017-03-30
+#   File        : fsm_B.py
+#   Reference   : -
+#   Description : Statemachine B.
+#   Python ver  : 2.7.3 (gcc 4.6.3)
+
 from time import sleep
 import statemachine2 as sm
 import events as ev
@@ -30,10 +37,10 @@ class StateMachine_B:
 
     def state1(self, cargo):
         print "%s %s: %s() - cargoB=%d %s" % (ev.bcolors.BLUE, \
-	                            self.__class__.__name__, \
-				    inspect.stack()[0][3], \
-				    self.cargo.x, \
-				    ev.bcolors.ENDC),
+	                                      self.__class__.__name__, \
+				              inspect.stack()[0][3], \
+				              self.cargo.x, \
+				              ev.bcolors.ENDC),
         newState = "STATE2";
 
 	if (self.EV.RUN == 1):
@@ -47,10 +54,10 @@ class StateMachine_B:
     
     def state2(self, cargo):
         print "%s %s: %s() - cargoB=%d %s" % (ev.bcolors.BLUE, \
-	                            self.__class__.__name__, \
-				    inspect.stack()[0][3], \
-				    self.cargo.x, \
-				    ev.bcolors.ENDC),
+	                                      self.__class__.__name__, \
+				              inspect.stack()[0][3], \
+				              self.cargo.x, \
+				              ev.bcolors.ENDC),
 
 	print "  %s %s %s" % (ev.bcolors.BLUE, '---', ev.bcolors.ENDC)
         newState = "STATE3";
@@ -60,10 +67,10 @@ class StateMachine_B:
 
     def state3(self, cargo):
         print "%s %s: %s() - cargoB=%d %s" % (ev.bcolors.BLUE, \
-	                            self.__class__.__name__, \
-				    inspect.stack()[0][3], \
-				    self.cargo.x, \
-				    ev.bcolors.ENDC),
+	                                      self.__class__.__name__, \
+				              inspect.stack()[0][3], \
+				              self.cargo.x, \
+				              ev.bcolors.ENDC),
 	if (self.cargo.x == 2):
 	    print "  %s %s %s" % (ev.bcolors.BLUE, 'enable STOP', ev.bcolors.ENDC)
 	    self.EV.STOP = 1
