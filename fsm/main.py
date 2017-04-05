@@ -12,7 +12,7 @@ import fsm_A
 import fsm_B
 import events
 
-NO_OF_DELIMITERS = 65
+NO_OF_DELIMITERS = 70
 
 def main():
     event = events.Events()
