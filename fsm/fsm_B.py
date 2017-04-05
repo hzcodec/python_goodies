@@ -1,8 +1,9 @@
 from time import sleep
 import statemachine2 as sm
 import events as ev
+import inspect
 
-DLY = 0.4
+DLY = 0.2
 
 class Cargo:
     name = ''
@@ -29,18 +30,28 @@ class StateMachine_B:
 
     def state1(self, cargo):
         self.cargo.x += 1
-        print "STATE1 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
+        print "%s %s: %s() - cargo=%d %s" % (ev.bcolors.BLUE, \
+	                            self.__class__.__name__, \
+				    inspect.stack()[0][3], \
+				    self.cargo.x, \
+				    ev.bcolors.ENDC),
         newState =  "STATE2";
 
 	if (self.EV.STOP == 1):
-            print "STATE1 State in, EV_STOP", self.__class__.__name__
+	    print "  %s %s %s" % (ev.bcolors.BLUE, 'STOP event', ev.bcolors.ENDC)
 	    self.EV.SKIP = 0
+	else:
+	    print ""
 
         sleep(DLY)
         return (newState, self.cargo)
     
     def state2(self, cargo):
-        print "STATE2 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
+        print "%s %s: %s() - cargo=%d %s" % (ev.bcolors.BLUE, \
+	                            self.__class__.__name__, \
+				    inspect.stack()[0][3], \
+				    self.cargo.x, \
+				    ev.bcolors.ENDC)
         newState =  "STATE3";
 
 	self.EV.SKIP = 1
@@ -49,7 +60,11 @@ class StateMachine_B:
         return (newState, self.cargo)
 
     def state3(self, cargo):
-        print "STATE3 State in", self.__class__.__name__ + "  cargo:", self.cargo.x
+        print "%s %s: %s() - cargo=%d %s" % (ev.bcolors.BLUE, \
+	                            self.__class__.__name__, \
+				    inspect.stack()[0][3], \
+				    self.cargo.x, \
+				    ev.bcolors.ENDC)
         newState =  "STATE1";
 
         sleep(DLY)

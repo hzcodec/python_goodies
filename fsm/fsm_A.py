@@ -5,10 +5,12 @@ import inspect
 
 DLY = 0.1
 
+# Object holding data
 class Cargo:
     name = ''
     x = 0
     y = 0
+
 
 class StateMachine_A:
     def __init__(self):
