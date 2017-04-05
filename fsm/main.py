@@ -14,7 +14,7 @@ def main():
 
     for i in range(0, 12):
         ev = one.go(ev)
-	print '----> SKIP:%d, RUN:%d, STOP:%d' % (ev.SKIP, ev.RUN, ev.STOP)
+	#print '----> SKIP:%d, RUN:%d, STOP:%d' % (ev.SKIP, ev.RUN, ev.STOP)
         #ev = two.go(ev)
 	#print '----> SKIP:%d, RUN:%d, STOP:%d' % (ev.SKIP, ev.RUN, ev.STOP)
 

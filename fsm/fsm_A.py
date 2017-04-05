@@ -32,13 +32,12 @@ class StateMachine_A:
         print "%s %s: - %s() %s" % (ev.bcolors.GREEN, \
 	                            self.__class__.__name__, \
 				    inspect.stack()[0][3], \
-				    ev.bcolors.ENDC)
+				    ev.bcolors.ENDC),
 
 	if (self.EV.SKIP == 0):
-	    #print ev.bcolors.GREEN + 'no skip from A' + ev.bcolors.ENDC
-	    pass
+	    print "  %s %s %s" % (ev.bcolors.GREEN, 'no skip from A', ev.bcolors.ENDC)
 	else:
-	    #print ev.bcolors.GREEN + 'skip from A and send STOP' + ev.bcolors.ENDC
+	    print "  %s %s %s" % (ev.bcolors.GREEN, 'skip from A', ev.bcolors.ENDC)
 	    self.EV.STOP = 1
 
 
@@ -48,10 +47,14 @@ class StateMachine_A:
         return (newState, self.cargo)
     
     def state2(self, cargo):
-        print "%s %s: - %s() %s" % (ev.bcolors.GREEN, self.__class__.__name__, inspect.stack()[0][3], ev.bcolors.ENDC)
+        print "%s %s: - %s() %s" % (ev.bcolors.GREEN, \
+	                            self.__class__.__name__, \
+				    inspect.stack()[0][3], \
+				    ev.bcolors.ENDC),
         newState =  "STATE1";
 
-	if (self.EV.SKIP == 1):
+	if (self.EV.SKIP == 0):
+	    print "  %s %s %s" % (ev.bcolors.GREEN, 'skip active, send STOP', ev.bcolors.ENDC)
 	    self.EV.STOP = 0
 
         sleep(DLY)
