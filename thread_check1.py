@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+#   Auther      : Heinz Samuelsson
+#   Date        : 2017-06-29
+#   File        : thread_check1.py
+#   Reference   : -
+#   Description : Dynamically connect a USB to serial.
+#   Python ver  : 2.7.3 (gcc 4.6.3)
+
 import wx
 import serial
 import os
