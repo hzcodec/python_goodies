@@ -48,7 +48,6 @@ class PollPortName(threading.Thread):
 		else:
 		    portName = self.tmpList[0]
 
-
 	    # if port exists
 	    if (os.path.exists(portName) == True and self.lock == False):
 	        self.portIsDisconnected = False
@@ -61,25 +60,21 @@ class PollPortName(threading.Thread):
 	    elif (os.path.exists(portName) == False and self.lock == True):
 	        self.portIsDisconnected = True
 	        self.portIsConnected = False
+
+	        self.portIsClosed = True # ---
+                ser.close()
+
 	        self.lock = False
 	        self.lock2 = True
 		self.sentPortName = 'Connection lost'
 	        print '\nPort is disconnected'
 
-            if (self.portIsConnected == True and self.portIsClosed == True):
+	    # reconnect port
+            if (self.portIsConnected == True and self.portIsDisconnected == True):
 	        print 'Reconnect: ' + portName
 	        time.sleep(1)
 	        ser, portName = self.connect_port()
     
-            if (ser.isOpen() and self.portIsConnected == True):
-	        self.portIsClosed = False
-
-	    elif (self.lock2 == True):
-                ser.close()
-	        self.portIsClosed = True
-	        self.lock2 = False
-	        print 'Port closed'
-
             wx.CallAfter(pub.sendMessage, "TOPIC_PORTNAME", msg=self.sentPortName)
 	    time.sleep(1)
 
