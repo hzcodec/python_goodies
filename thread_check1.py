@@ -24,9 +24,7 @@ class PollPortName(threading.Thread):
     def __init__(self):
         self.portIsConnected = False
         self.portIsDisconnected = False
-        self.portIsClosed = False
         self.lock = False 
-	self.lock2 = False
 	self.sentPortName = 'Connect USB cable'
 	self.tmpList = []
 
@@ -60,13 +58,9 @@ class PollPortName(threading.Thread):
 	    elif (os.path.exists(portName) == False and self.lock == True):
 	        self.portIsDisconnected = True
 	        self.portIsConnected = False
-
-	        self.portIsClosed = True # ---
-                ser.close()
-
 	        self.lock = False
-	        self.lock2 = True
 		self.sentPortName = 'Connection lost'
+                ser.close()
 	        print '\nPort is disconnected'
 
 	    # reconnect port
