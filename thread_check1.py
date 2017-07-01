@@ -108,15 +108,8 @@ class Example(wx.Frame):
 
     def InitUI(self):
     
-        menubar = wx.MenuBar()
-        filem = wx.Menu()
-
-        menubar.Append(filem, '&File')
-        self.SetMenuBar(menubar)
-
 	self.btnConnect = wx.Button(self, wx.ID_ANY, 'Connect', pos=(10, 50))
 	self.Bind(wx.EVT_BUTTON, self.onConnect, self.btnConnect)
-
 
     def get_port_name(self, msg):
 
