@@ -10,7 +10,7 @@ class Door:
 
      # allocation of the class
      def __init__(self):
-         self.doorstatus = 'The door was closed when you are not home'
+         self.doorstatus = 'The door is closed when you are not home'
          print(self.doorstatus)
 
      # entering the context
@@ -23,7 +23,7 @@ class Door:
          print('Pong! The door has been closed')
 
      def fetchsomethings(self):
-         print('I fetched somethings')
+         print('I fetched something')
 
 
 with Door() as dr:
