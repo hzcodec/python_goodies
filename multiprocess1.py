@@ -11,6 +11,10 @@ import multiprocessing
 import time
 import glob
 import os
+import wx
+
+port = None
+
 
 class PollPort():
 
@@ -30,9 +34,8 @@ class PollPort():
         while(True):
 
             self.portList = glob.glob('/dev/ttyA*') + glob.glob('/dev/ttyUSB*')
-            print self.portList
+            port = self.portList[0] 
 
-            # check if there are any active ports
             if self.portList:
                 self.gotPort = True
 	        print 'Get attached ports: %s, gotPort=%d' % (self.portList, self.gotPort)
@@ -40,21 +43,36 @@ class PollPort():
                 print 'No port available'
 
             time.sleep(1)
-            print '---'
 
     def stop_worker(self):
         print 'worker 1 is terminated'
         self.portScanner.terminate()
 
 
+class Example(wx.Frame):
+  
+    def __init__(self, parent, title):
+        super(Example, self).__init__(parent, title=title, size=(260, 180))
+
+	self.txtInfo = wx.StaticText(self, wx.ID_ANY, 'No connection established yet')
+
+        self.InitUI()
+        self.Centre()
+        self.Show()
+
+    def InitUI(self):
+    
+	self.btnConnect = wx.Button(self, wx.ID_ANY, 'Connect', pos=(10, 50))
+	self.Bind(wx.EVT_BUTTON, self.onConnect, self.btnConnect)
+
+    def onConnect(self, event):
+	poll_port = PollPort()
+        poll_port.start_worker()
+
+
 if __name__ == '__main__':
-
-    poll_port = PollPort()
-    poll_port.start_worker()
-    time.sleep(4)
-
-    while (True):
-        time.sleep(3)
-
-    print 'Done'
+  
+    app = wx.App()
+    Example(None, title='')
+    app.MainLoop()
 
