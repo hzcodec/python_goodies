@@ -17,6 +17,7 @@ class PollPort():
     def __init__(self):
         print '__init__'
         self.portList = []
+        self.gotPort = False
 
     def start_worker(self):
         print 'Start worker 1'
@@ -27,10 +28,16 @@ class PollPort():
         processName = multiprocessing.current_process().name
 
         while(True):
+
+            self.portList = glob.glob('/dev/ttyA*') + glob.glob('/dev/ttyUSB*')
+            print self.portList
+
             # check if there are any active ports
-            if not self.portList:
-                self.portList = glob.glob('/dev/ttyA*') + glob.glob('/dev/ttyUSB*')
-	        print 'Get attached ports: %s' % (self.portList)
+            if self.portList:
+                self.gotPort = True
+	        print 'Get attached ports: %s, gotPort=%d' % (self.portList, self.gotPort)
+            else:
+                print 'No port available'
 
             time.sleep(1)
             print '---'
@@ -46,14 +53,8 @@ if __name__ == '__main__':
     poll_port.start_worker()
     time.sleep(4)
 
-    poll_port.stop_worker()
-    time.sleep(2)
-
-    poll_port.start_worker()
-    time.sleep(4)
-
-    poll_port.stop_worker()
-    time.sleep(2)
+    while (True):
+        time.sleep(3)
 
     print 'Done'
 
