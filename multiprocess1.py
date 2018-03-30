@@ -44,6 +44,9 @@ class PollPort():
 
             time.sleep(1)
 
+    def get_port_name(self):
+        return self.portList
+
     def stop_worker(self):
         print 'worker 1 is terminated'
         self.portScanner.terminate()
@@ -65,9 +68,17 @@ class Example(wx.Frame):
 	self.btnConnect = wx.Button(self, wx.ID_ANY, 'Connect', pos=(10, 50))
 	self.Bind(wx.EVT_BUTTON, self.onConnect, self.btnConnect)
 
+	self.btnGetName = wx.Button(self, wx.ID_ANY, 'Get Name', pos=(10, 80))
+	self.Bind(wx.EVT_BUTTON, self.onGetName, self.btnGetName)
+
     def onConnect(self, event):
-	poll_port = PollPort()
-        poll_port.start_worker()
+	self.poll_port = PollPort()
+        self.poll_port.start_worker()
+
+    def onGetName(self, event):
+        print 'Get port name'
+	rv = self.poll_port.get_port_name()
+	print 'Port name:', rv
 
 
 if __name__ == '__main__':
