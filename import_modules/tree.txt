@@ -1,0 +1,19 @@
+.
+├── bsp
+│   ├── __init__.py
+│   ├── __init__.pyc
+│   ├── mod3.py
+│   ├── mod3.pyc
+│   ├── mod4.py
+│   └── mod4.pyc
+├── lib
+│   ├── __init__.py
+│   ├── __init__.pyc
+│   ├── mod2.py
+│   └── mod2.pyc
+├── mod1.py
+├── mod1.pyc
+├── test1.py
+└── tree.txt
+
+2 directories, 14 files
