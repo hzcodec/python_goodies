@@ -13,12 +13,6 @@ sys.path.insert(0, abspath(join(dirname(__file__), '..')))
 from lib import mod2
 from bsp import mod3, mod4
 
-class Box():
-	def __init__(self):
-		self.x = 10
-	
-	def printx(self):
-		print self.x
 
 mod1.plot(10, 10)
 mod2.calc(12)
