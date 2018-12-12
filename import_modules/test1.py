@@ -8,10 +8,11 @@ import os
 #sys.path.insert(0, '/home/heinz.samuelsson/python/import_modules/lib')
 #import mod2
 
-from os.path import dirname, join, abspath
-sys.path.insert(0, abspath(join(dirname(__file__), '..')))
-from lib import mod2
+#from os.path import dirname, join, abspath
+#sys.path.insert(0, abspath(join(dirname(__file__), '..')))
+#from lib import mod2
 from bsp import mod3, mod4
+from lib import mod2
 
 
 mod1.plot(10, 10)
