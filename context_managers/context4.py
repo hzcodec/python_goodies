@@ -28,3 +28,5 @@ class Door:
 
 with Door() as dr:
     dr.fetchsomethings()
+
+print("Now I'm out")
