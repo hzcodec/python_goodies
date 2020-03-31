@@ -34,12 +34,13 @@ class HeartBeatProducer:
 			start = time.time()
 			self.transmit()
 			time_left = self.period - (time.time() - start)
+			print('Start: {}, time_left: {}'.format(start, time_left))
 			self.stop_event.wait(max(time_left, 0.0))
 
 
 def main():
 	hp = HeartBeatProducer(1)
-	hp.start(2, 0.5)
+	hp.start(2, 0.2)
 
 	c = 0
 	
